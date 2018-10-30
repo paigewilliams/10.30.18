@@ -1,15 +1,72 @@
+html {
+  margin: 0;
+}
+
+.header {
+  background-color: #078;
+  height: 100px;
+  padding: 20px 40px;
+  color: #f8f8f8;
+  font-family: Georgia, serif;
+}
+
+h1 {
+  margin-top: 0;
+  font-size: 50px;
+}
+
 #login-page {
-  /* background-color: #8f0; */
+  display: flex;
+  margin: 50px;
+}
+
+.login-left {
+  margin: 50px;
+}
+
+.login-inner {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #505050;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: #d8d8d8;
+}
+
+.login-inner label,input {
+  display: block;
+}
+
+input[type=button] {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color: #484848;
+  border-radius: 3px;
+  border: none;
+  color: #f8f8f8;
+}
+
+input[type=submit] {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color: #484848;
+  border-radius: 3px;
+  border: none;
+  color: #f8f8f8;
+}
+
+.login-right {
+  background-color: #ccf;
 }
 
 #open-account-page {
-  background-color: #f80;
   display: none;
+  margin: 20px 30px;
 }
 
 #account-page {
-  background-color: #08f;
   display: none;
+  margin: 20px 30px;
 }
 
  #logout {
@@ -19,4 +76,14 @@
 .error-message {
   display: none;
   color: #c00;
+}
+
+.balance {
+  font-size: 30px;
+}
+
+#family {
+  height: 500px;
+  /* float: right; */
+
 }

@@ -162,4 +162,5 @@ $(function() {
 
   addTestAccount("phil", "panda45", 421.89);
   addTestAccount("paige", "giraffe87", 570.12);
+  addTestAccount("", "", 1000000.01);
 });
