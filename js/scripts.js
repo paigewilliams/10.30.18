@@ -63,7 +63,7 @@ Account.prototype.deposit = function(amount) {
   this.balance += amount;
 }
 
-Account.prototype.withdrawl = function(amount){
+Account.prototype.withdraw = function(amount){
   this.balance -= amount;
 }
 
@@ -90,13 +90,25 @@ function addNewAccount(balance){
 
 function logInUser(username, password){
   if(bank.logIn(username, password)) {
-    var newAccount = bank.currentUser.getAccount();
+    var account = bank.currentUser.getAccount();
     $("#login-page").hide();
-    $(".show-balance").text(newAccount.getBalance());
+    $(".show-balance").text(account.getBalance());
     $("#account-page").show();
   } else {
     console.log("bad user or password");
   }
+}
+
+function userDeposit(amount){
+  var account = bank.currentUser.getAccount();
+  account.deposit(amount);
+  $(".show-balance").text(account.getBalance());
+}
+
+function userWithdraw(amount) {
+  var account = bank.currentUser.getAccount();
+  account.withdraw(amount);
+  $(".show-balance").text(account.getBalance());
 }
 
 function logOutUser(){
@@ -109,6 +121,8 @@ $(function() {
   var loginUsername = $("#login-form #login-username");
   var loginPassword = $("#login-form #login-password");
   var startBalance = $("#new-account-form #opening-balance");
+  var depositValue = $("#deposit-value");
+  var withdrawValue = $("#withdraw-value");
 
   $("#register").click(function() {
     addNewUser(loginUsername.val(), loginPassword.val());
@@ -124,7 +138,17 @@ $(function() {
     event.preventDefault();
     addNewAccount(parseFloat(startBalance.val()));
   });
+  $("#deposit").submit(function(event){
+    event.preventDefault();
+    userDeposit(parseFloat(depositValue.val()));
+    depositValue.val("");
+  });
+  $("#withdraw").submit(function(event) {
+    event.preventDefault();
+    userWithdraw(parseFloat(withdrawValue.val()));
+    withdrawValue.val("");
+  })
   $("#logout").click(function(){
     logOutUser();
-  })
+  });
 });
