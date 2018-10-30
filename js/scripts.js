@@ -71,9 +71,15 @@ Account.prototype.getBalance = function(){
 var bank = new Bank();
 
 $(function() {
-  $("#login-form").submit(function(event) {
-    event.preventDefault();
-    console.log(event);
-    //var = which button was clicked
+  $("#register").click(function() {
+    console.log("register");
   });
+  $("#login").click(function() {
+    console.log("login");
+  });
+  // $("#login-form").submit(function(event) {
+  //   event.preventDefault();
+  //   console.log($(this).attr("value"), $(this).attr("name"));
+  //   //var = which button was clicked
+  // });
 });
