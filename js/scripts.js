@@ -16,8 +16,11 @@ AddressBook.prototype.assignId = function() {
 
 AddressBook.prototype.findContact = function(id) {
   for (var i = 0; i < this.contacts.length; i++) {
+    console.log(i, this.contacts[i]);
     if (this.contacts[i]) {
+      console.log(" first if c.id=", this.contacts[i].id, "  id=", id);
       if (this.contacts[i].id === id) {
+        console.log(" second if");
         return this.contacts[i];
       }
     }
@@ -52,6 +55,23 @@ Contact.prototype.fullName = function() {
 // UI logic
 var addressBook = new AddressBook();
 
+function showContact(contactId) {
+  var contact = addressBook.findContact(contactId);
+  $(".first-name").html(contact.firstName);
+  $(".last-name").html(contact.lastName);
+  $(".phone-number").html(contact.phoneNumber);
+  var buttons = $("#buttons");
+  buttons.empty();
+  buttons.append("<input type='button' class='deleteButton' id='" + contact.id + "' value='Delete'>");
+  $("#show-contact").show();
+}
+
+function attachContactListeners() {
+  $("ul#contacts").on("click", "li", function() {
+    showContact(parseInt(this.id));
+  });
+}
+
 function displayContactDetails(addressBookToDisplay){
   var contactsList = $("ul#contacts");
   var htmlForContactInfo = "";
@@ -62,18 +82,15 @@ function displayContactDetails(addressBookToDisplay){
 }
 
 $(function(){
-$("form#new-contact").submit(function(event){
-  event.preventDefault();
-  var inputtedFirstName = $ ("input#new-first-name").val();
-  var inputtedLastName = $ ("input#new-last-name").val();
-  var inputtedPhoneNumber = $ ("input#new-phone-number").val();
+  attachContactListeners();
+  $("form#new-contact").submit(function(event){
+    event.preventDefault();
+    var inputtedFirstName = $ ("input#new-first-name").val();
+    var inputtedLastName = $ ("input#new-last-name").val();
+    var inputtedPhoneNumber = $ ("input#new-phone-number").val();
 
-  var newContact = new Contact(inputtedFirstName, inputtedLastName, inputtedPhoneNumber);
-  addressBook.addContact(newContact);
-  displayContactDetails(addressBook);
-})
-
-
-
-
-})
+    var newContact = new Contact(inputtedFirstName, inputtedLastName, inputtedPhoneNumber);
+    addressBook.addContact(newContact);
+    displayContactDetails(addressBook);
+  });
+});
