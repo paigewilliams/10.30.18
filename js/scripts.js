@@ -70,6 +70,12 @@ function attachContactListeners() {
   $("ul#contacts").on("click", "li", function() {
     showContact(parseInt(this.id));
   });
+
+  $("#buttons").on("click", ".deleteButton", function(){
+    addressBook.deleteContact(parseInt(this.id));
+    $("#show-contact").hide();
+    displayContactDetails(addressBook);
+  })
 }
 
 function displayContactDetails(addressBookToDisplay){
