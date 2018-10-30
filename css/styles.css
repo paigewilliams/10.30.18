@@ -1,6 +1,18 @@
+#parent-box {
+  display: flex;
+}
+
 #show-contact {
+  border: 1px dotted #8f0;
+  flex-grow: 1;
   display: none;
 }
- li {
-   background-color: #f80;
- }
+
+#contacts {
+  border: 1px dotted #80f;
+  flex-grow: 1;
+}
+
+li {
+ border: 1px dotted #f80;
+}
