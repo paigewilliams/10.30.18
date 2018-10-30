@@ -8,6 +8,10 @@
 }
 
 #account-page {
-  background-color: #80f;
+  background-color: #08f;
   display: none;
 }
+
+ #logout {
+   float: right;
+ }

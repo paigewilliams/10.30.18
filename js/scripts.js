@@ -84,11 +84,25 @@ function addNewAccount(balance){
   var newAccount = bank.currentUser.getAccount();
   newAccount.deposit(balance);
   $("#open-account-page").hide();
+  $(".show-balance").text(newAccount.getBalance());
   $("#account-page").show();
 }
 
-function logIn(username, password){
-  console.log("log in u=", username, " p=", password);
+function logInUser(username, password){
+  if(bank.logIn(username, password)) {
+    var newAccount = bank.currentUser.getAccount();
+    $("#login-page").hide();
+    $(".show-balance").text(newAccount.getBalance());
+    $("#account-page").show();
+  } else {
+    console.log("bad user or password");
+  }
+}
+
+function logOutUser(){
+  bank.logOut();
+  $("#account-page").hide();
+  $("#login-page").show();
 }
 
 $(function() {
@@ -98,12 +112,19 @@ $(function() {
 
   $("#register").click(function() {
     addNewUser(loginUsername.val(), loginPassword.val());
+    loginUsername.val("");
+    loginPassword.val("");
   });
   $("#login").click(function() {
-    logIn(loginUsername.val(), loginPassword.val())
+    logInUser(loginUsername.val(), loginPassword.val());
+    loginUsername.val("");
+    loginPassword.val("");
   });
   $("#new-account-form").submit(function(event){
     event.preventDefault();
     addNewAccount(parseFloat(startBalance.val()));
+  });
+  $("#logout").click(function(){
+    logOutUser();
   })
 });
