@@ -55,7 +55,7 @@ function Account (balance) {
   this.balance = balance;
 }
 
-Account.prototpe.deposit = function(amount){
+Account.prototype.deposit = function(amount) {
   this.balance += amount;
 }
 
@@ -69,3 +69,11 @@ Account.prototype.getBalance = function(){
 
 //User Interface Logic
 var bank = new Bank();
+
+$(function() {
+  $("#login-form").submit(function(event) {
+    event.preventDefault();
+    console.log(event);
+    //var = which button was clicked
+  });
+});
