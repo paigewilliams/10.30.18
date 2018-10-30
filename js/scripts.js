@@ -38,6 +38,10 @@ Bank.prototype.logIn = function(username, password){
   }
 }
 
+Bank.prototype.logOut = function(){
+  this.currentUser = null;
+}
+
 //Business logic for users
 function User (id, name, password) {
   this.account = new Account(0);
