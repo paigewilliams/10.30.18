@@ -55,7 +55,17 @@ function Account (balance) {
   this.balance = balance;
 }
 
-var bank = new Bank();
+Account.prototpe.deposit = function(amount){
+  this.balance += amount;
+}
 
+Account.prototype.withdrawl = function(amount){
+  this.balance -= amount;
+}
+
+Account.prototype.getBalance = function(){
+  return this.balance;
+}
 
 //User Interface Logic
+var bank = new Bank();
