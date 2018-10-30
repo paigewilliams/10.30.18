@@ -65,10 +65,13 @@ Account.prototype.deposit = function(amount) {
 
 Account.prototype.withdraw = function(amount){
   this.balance -= amount;
+  if(this.balance < 0) {
+    this.balance = 0;
+  }
 }
 
 Account.prototype.getBalance = function(){
-  return this.balance;
+  return this.balance.toFixed(2);
 }
 
 //User Interface Logic
@@ -162,5 +165,4 @@ $(function() {
 
   addTestAccount("phil", "panda45", 421.89);
   addTestAccount("paige", "giraffe87", 570.12);
-  addTestAccount("", "", 1000000.01);
 });
