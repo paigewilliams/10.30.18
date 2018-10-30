@@ -18,6 +18,26 @@ Bank.prototype.registerUser = function(username, password){
   this.users.push(newUser);
 }
 
+Bank.prototype.logIn = function(username, password){
+  var foundUser = null;
+  for (var i = 0; i <this.users.length; i++){
+    if (username === this.users[i].name){
+      foundUser = this.users[i];
+    }
+  }
+
+  if(!foundUser) {
+    return false;
+  }
+
+  if(foundUser.password === password) {
+    this.currentUser = foundUser;
+    return true;
+  } else {
+    return false;
+  }
+}
+
 //Business logic for users
 function User (id, name, password) {
   this.account = new Account(0);
