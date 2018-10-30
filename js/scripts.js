@@ -50,6 +50,10 @@ function User (id, name, password) {
   this.password = password;
 }
 
+User.prototype.getAccount = function(){
+  return this.account;
+}
+
 //Business logic for account
 function Account (balance) {
   this.balance = balance;
@@ -70,8 +74,17 @@ Account.prototype.getBalance = function(){
 //User Interface Logic
 var bank = new Bank();
 
-function registerUser(username, password) {
-  console.log("register u=", username, " p=", password);
+function addNewUser(username, password) {
+  bank.registerUser(username, password)
+  $("#login-page").hide();
+  $("#open-account-page").show();
+}
+
+function addNewAccount(balance){
+  var newAccount = bank.currentUser.getAccount();
+  newAccount.deposit(balance);
+  $("#open-account-page").hide();
+  $("#account-page").show();
 }
 
 function logIn(username, password){
@@ -80,13 +93,17 @@ function logIn(username, password){
 
 $(function() {
   var loginUsername = $("#login-form #login-username");
-  var loginPassword = $("#login-form #login-password")
+  var loginPassword = $("#login-form #login-password");
+  var startBalance = $("#new-account-form #opening-balance");
 
   $("#register").click(function() {
-    registerUser(loginUsername.val(), loginPassword.val());
+    addNewUser(loginUsername.val(), loginPassword.val());
   });
   $("#login").click(function() {
     logIn(loginUsername.val(), loginPassword.val())
   });
-
+  $("#new-account-form").submit(function(event){
+    event.preventDefault();
+    addNewAccount(parseFloat(startBalance.val()));
+  })
 });

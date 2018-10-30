@@ -4,8 +4,10 @@
 
 #open-account-page {
   background-color: #f80;
+  display: none;
 }
 
 #account-page {
   background-color: #80f;
+  display: none;
 }

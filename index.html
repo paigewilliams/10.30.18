@@ -10,42 +10,45 @@
     <title></title>
   </head>
   <body>
-    <h1>BoE - The Bank of Epicodus</h1>
-    <div id="login-page">
-      <h2>User Login</h2>
-      <form id="login-form">
-        <label for="login-username"></label>
-        <input type="text" id="login-username">
-        <label for="login-password"></label>
-        <input type="text" id="login-password">
-        <input type="button" id="register" value="Register">
-        <input type="button" id="login" value="Log In">
-      </form>
-    </div>
-    <div id="open-account-page">
-      <h2>Open a New Account</h2>
-      <form id="new-account-form">
-        <label for="opening-balance">How much would you like to deposit </label>
-        <input type="number" id="opening-balance">
-        <input type="submit" value="Open Account">
-      </form>
-    </div>
-    <div id="account-page">
-      <h2>Accounts</h2>
-      <form id="deposit">
-        <label for="deposit">How much would you like to deposit</label>
-        <input type="number" id="deposit-value">
-        <input type="submit" value="Deposit">
-      </form>
-      <form id="withdraw">
-        <label for="withdraw">How much would you like to withdraw</label>
-        <input type="number" id="withdraw-value">
-        <input type="submit" value="Withdraw">
-      </form>
-      <div class="balance">
-        <h4>Balance</h4>
-        <span class="show-balance"></span>
+    <div class="container">
 
+      <h1>BoE - The Bank of Epicodus</h1>
+      <div id="login-page">
+        <h2>User Login</h2>
+        <form id="login-form">
+          <label for="login-username">Username:</label>
+          <input type="text" id="login-username">
+          <label for="login-password">Password:</label>
+          <input type="text" id="login-password">
+          <input type="button" id="register" value="Register">
+          <input type="button" id="login" value="Log In">
+        </form>
+      </div>
+      <div id="open-account-page">
+        <h2>Open a New Account</h2>
+        <form id="new-account-form">
+          <label for="opening-balance">How much would you like to deposit </label>
+          <input type="number" id="opening-balance" step=".01">
+          <input type="submit" id="open-account" value="Open Account">
+        </form>
+      </div>
+      <div id="account-page">
+        <h2>Accounts</h2>
+        <form id="deposit">
+          <label for="deposit">How much would you like to deposit</label>
+          <input type="number" id="deposit-value" step=".01">
+          <input type="submit" value="Deposit">
+        </form>
+        <form id="withdraw">
+          <label for="withdraw">How much would you like to withdraw</label>
+          <input type="number" id="withdraw-value" step=".01">
+          <input type="submit" value="Withdraw">
+        </form>
+        <div class="balance">
+          <h4>Balance</h4>
+          <span class="show-balance"></span>
+
+        </div>
       </div>
     </div>
   </body>
