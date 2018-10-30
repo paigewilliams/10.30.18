@@ -93,9 +93,10 @@ function logInUser(username, password){
     var account = bank.currentUser.getAccount();
     $("#login-page").hide();
     $(".show-balance").text(account.getBalance());
+    $(".error-message").hide();
     $("#account-page").show();
   } else {
-    console.log("bad user or password");
+    $(".error-message").show();
   }
 }
 
@@ -115,6 +116,13 @@ function logOutUser(){
   bank.logOut();
   $("#account-page").hide();
   $("#login-page").show();
+}
+
+function addTestAccount(username, password, balance) {
+  bank.registerUser(username, password);
+  var newAccount = bank.currentUser.getAccount();
+  newAccount.deposit(balance);
+  bank.logOut();
 }
 
 $(function() {
@@ -151,4 +159,7 @@ $(function() {
   $("#logout").click(function(){
     logOutUser();
   });
+
+  addTestAccount("phil", "panda45", 421.89);
+  addTestAccount("paige", "giraffe87", 570.12);
 });

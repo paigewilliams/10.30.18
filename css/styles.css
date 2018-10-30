@@ -1,5 +1,5 @@
 #login-page {
-  background-color: #8f0;
+  /* background-color: #8f0; */
 }
 
 #open-account-page {
@@ -15,3 +15,8 @@
  #logout {
    float: right;
  }
+
+.error-message {
+  display: none;
+  color: #c00;
+}
