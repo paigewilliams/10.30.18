@@ -70,16 +70,23 @@ Account.prototype.getBalance = function(){
 //User Interface Logic
 var bank = new Bank();
 
+function registerUser(username, password) {
+  console.log("register u=", username, " p=", password);
+}
+
+function logIn(username, password){
+  console.log("log in u=", username, " p=", password);
+}
+
 $(function() {
+  var loginUsername = $("#login-form #login-username");
+  var loginPassword = $("#login-form #login-password")
+
   $("#register").click(function() {
-    console.log("register");
+    registerUser(loginUsername.val(), loginPassword.val());
   });
   $("#login").click(function() {
-    console.log("login");
+    logIn(loginUsername.val(), loginPassword.val())
   });
-  // $("#login-form").submit(function(event) {
-  //   event.preventDefault();
-  //   console.log($(this).attr("value"), $(this).attr("name"));
-  //   //var = which button was clicked
-  // });
+
 });
